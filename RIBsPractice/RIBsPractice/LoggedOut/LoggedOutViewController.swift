@@ -18,5 +18,16 @@ protocol LoggedOutPresentableListener: class {
 
 final class LoggedOutViewController: UIViewController, LoggedOutPresentable, LoggedOutViewControllable {
 
+    @IBOutlet private weak var player1NameTextField: UITextField!
+    @IBOutlet private weak var player2NameTextField: UITextField!
+
     weak var listener: LoggedOutPresentableListener?
+}
+
+// MARK: IBActions
+private extension LoggedOutViewController {
+
+    @IBAction func didTapLoginButton(_ sender: UIButton) {
+    }
+
 }
