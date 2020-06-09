@@ -10,7 +10,7 @@
         <!--Logged Out View Controller-->
         <scene sceneID="GzV-lN-fg7">
             <objects>
-                <viewController id="vKn-9P-Ny8" customClass="LoggedOutViewController" customModule="RIBsPractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoggedOutViewController" id="vKn-9P-Ny8" customClass="LoggedOutViewController" customModule="RIBsPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
