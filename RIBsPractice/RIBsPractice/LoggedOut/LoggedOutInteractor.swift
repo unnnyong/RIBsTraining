@@ -22,7 +22,7 @@ protocol LoggedOutListener: class {
     // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
 }
 
-final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, LoggedOutInteractable, LoggedOutPresentableListener {
+final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, LoggedOutInteractable {
 
     weak var router: LoggedOutRouting?
     weak var listener: LoggedOutListener?
@@ -43,4 +43,18 @@ final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, Lo
         super.willResignActive()
         // TODO: Pause any business logic.
     }
+}
+
+// MARK: LoggedOutPresentableListener
+extension LoggedOutInteractor: LoggedOutPresentableListener {
+
+    func login(player1Name: String?, player2Name: String?) {
+        let player1Name = player1Name ?? "Default"
+        let player2Name = player2Name ?? "Default"
+
+        print("🙅‍♂️")
+
+        print("첫 번째 선수 이름: \(player1Name), 두 번째 선수 이름: \(player2Name)")
+    }
+
 }
