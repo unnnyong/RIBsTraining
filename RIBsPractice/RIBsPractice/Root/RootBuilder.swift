@@ -11,7 +11,7 @@ import RIBs
 protocol RootDependency: Dependency {}
 
 final class RootComponent: Component<RootDependency> {}
-extension RootComponent: LoggedOutDependency {}
+extension RootComponent: LoggedOutDependency, LoggedInDependency {}
 
 // MARK: - Builder
 protocol RootBuildable: Buildable {
@@ -34,11 +34,13 @@ extension RootBuilder: RootBuildable {
         let viewController = RootViewController()
         let interactor = RootInteractor(presenter: viewController)
 
+        let loggedInBuilder = LoggedInBuilder(dependency: component)
         let loggedOutBuilder = LoggedOutBuilder(dependency: component)
 
         return RootRouter(
             interactor: interactor,
             viewController: viewController,
+            loggedInBuilder: loggedInBuilder,
             loggedOutBuilder: loggedOutBuilder
         )
     }

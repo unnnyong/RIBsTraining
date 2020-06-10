@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol RootInteractable: Interactable, LoggedOutListener {
+protocol RootInteractable: Interactable, LoggedOutListener, LoggedInListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
@@ -19,14 +19,19 @@ protocol RootViewControllable: ViewControllable {
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable> {
 
+    private let loggedInBuilder: LoggedInBuildable
+    private var loggedIn: ViewableRouting?
+
     private let loggedOutBuilder: LoggedOutBuildable
     private var loggedOut: ViewableRouting?
 
     init(
         interactor: RootInteractable,
         viewController: RootViewControllable,
+        loggedInBuilder: LoggedInBuildable,
         loggedOutBuilder: LoggedOutBuildable
     ) {
+        self.loggedInBuilder = loggedInBuilder
         self.loggedOutBuilder = loggedOutBuilder
 
         super.init(interactor: interactor, viewController: viewController)
