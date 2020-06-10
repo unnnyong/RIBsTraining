@@ -17,7 +17,7 @@ protocol RootViewControllable: ViewControllable {
     func present(viewController: ViewControllable)
 }
 
-final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
+final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable> {
 
     private let loggedOutBuilder: LoggedOutBuildable
     private var loggedOut: ViewableRouting?
@@ -43,4 +43,14 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, Ro
         attachChild(loggedOut)
         viewController.present(viewController: loggedOut.viewControllable)
     }
+}
+
+
+// MARK: RootRouting
+extension RootRouter: RootRouting {
+
+    func routeToLoggedIn(player1Name: String, player2Name: String) {
+        // TODO: Add attaching LoggedIn RIB code
+    }
+
 }
