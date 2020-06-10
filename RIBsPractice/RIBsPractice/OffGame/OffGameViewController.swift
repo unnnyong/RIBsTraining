@@ -10,7 +10,9 @@ import RIBs
 import RxSwift
 import UIKit
 
-protocol OffGamePresentableListener: class {}
+protocol OffGamePresentableListener: class {
+    func startGame()
+}
 
 final class OffGameViewController: UIViewController, OffGamePresentable, OffGameViewControllable {
 
@@ -21,6 +23,8 @@ final class OffGameViewController: UIViewController, OffGamePresentable, OffGame
 // MARK: IBAction
 private extension OffGameViewController {
 
-    @IBAction func didStartButton(_ sender: UIButton) {}
+    @IBAction func didStartButton(_ sender: UIButton) {
+        listener?.startGame()
+    }
 
 }

@@ -9,13 +9,24 @@
 import RIBs
 import RxSwift
 
-protocol LoggedInRouting: Routing {}
+protocol LoggedInRouting: Routing {
+    func routeToTicTacToe()
+}
 
 protocol LoggedInListener: class {}
 
-final class LoggedInInteractor: Interactor, LoggedInInteractable {
+final class LoggedInInteractor: Interactor {
 
     weak var router: LoggedInRouting?
     weak var listener: LoggedInListener?
+
+}
+
+// MARK: LoggedInInteractable
+extension LoggedInInteractor: LoggedInInteractable {
+
+    func startGame() {
+        router?.routeToTicTacToe()
+    }
 
 }

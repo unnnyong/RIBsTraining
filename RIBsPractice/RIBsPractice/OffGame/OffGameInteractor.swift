@@ -15,9 +15,11 @@ protocol OffGamePresentable: Presentable {
     var listener: OffGamePresentableListener? { get set }
 }
 
-protocol OffGameListener: class {}
+protocol OffGameListener: class {
+    func startGame()
+}
 
-final class OffGameInteractor: PresentableInteractor<OffGamePresentable>, OffGameInteractable, OffGamePresentableListener {
+final class OffGameInteractor: PresentableInteractor<OffGamePresentable>, OffGameInteractable {
 
     weak var router: OffGameRouting?
     weak var listener: OffGameListener?
@@ -26,6 +28,15 @@ final class OffGameInteractor: PresentableInteractor<OffGamePresentable>, OffGam
         super.init(presenter: presenter)
 
         presenter.listener = self
+    }
+
+}
+
+// MARK: OffGamePresentableListener
+extension OffGameInteractor: OffGamePresentableListener {
+
+    func startGame() {
+        listener?.startGame()
     }
 
 }

@@ -18,7 +18,7 @@ protocol LoggedInViewControllable: ViewControllable {
     func dismiss(viewController: ViewControllable)
 }
 
-final class LoggedInRouter: Router<LoggedInInteractable>, LoggedInRouting {
+final class LoggedInRouter: Router<LoggedInInteractable> {
 
     private let viewController: LoggedInViewControllable
 
@@ -50,6 +50,20 @@ final class LoggedInRouter: Router<LoggedInInteractable>, LoggedInRouting {
         attachChild(offGame)
 
         viewController.present(viewController: offGame.viewControllable)
+    }
+
+}
+
+// MARK: LoggedInRouting
+extension LoggedInRouter: LoggedInRouting {
+
+    func routeToTicTacToe() {
+        if let offGame = offGame {
+            detachChild(offGame)
+            viewController.dismiss(viewController: offGame.viewControllable)
+
+            self.currentChild = nil
+        }
     }
 
 }
