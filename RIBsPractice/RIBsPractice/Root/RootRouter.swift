@@ -21,7 +21,7 @@ protocol RootViewControllable: ViewControllable {
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable> {
 
     private let loggedInBuilder: LoggedInBuildable
-    private var loggedIn: ViewableRouting?
+    private var loggedIn: Routing?
 
     private let loggedOutBuilder: LoggedOutBuildable
     private var loggedOut: ViewableRouting?
@@ -49,6 +49,7 @@ final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable> {
         attachChild(loggedOut)
         viewController.present(viewController: loggedOut.viewControllable)
     }
+
 }
 
 
@@ -63,11 +64,9 @@ extension RootRouter: RootRouting {
             self.loggedOut = nil
         }
 
-        let loggedIn = loggedInBuilder.build(withListener: interactor)
-        self.loggedIn = loggedIn
+        self.loggedIn = loggedInBuilder.build(withListener: interactor)
 
-        attachChild(loggedIn)
-        viewController.present(viewController: loggedIn.viewControllable)
+        attachChild(loggedIn!)
     }
 
 }

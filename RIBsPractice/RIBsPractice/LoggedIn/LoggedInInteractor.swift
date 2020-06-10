@@ -9,22 +9,13 @@
 import RIBs
 import RxSwift
 
-protocol LoggedInRouting: ViewableRouting {}
-
-protocol LoggedInPresentable: Presentable {
-    var listener: LoggedInPresentableListener? { get set }
-}
+protocol LoggedInRouting: Routing {}
 
 protocol LoggedInListener: class {}
 
-final class LoggedInInteractor: PresentableInteractor<LoggedInPresentable>, LoggedInInteractable, LoggedInPresentableListener {
+final class LoggedInInteractor: Interactor, LoggedInInteractable {
 
     weak var router: LoggedInRouting?
     weak var listener: LoggedInListener?
-
-    override init(presenter: LoggedInPresentable) {
-        super.init(presenter: presenter)
-        presenter.listener = self
-    }
 
 }

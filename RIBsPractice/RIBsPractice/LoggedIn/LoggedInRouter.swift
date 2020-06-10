@@ -15,13 +15,17 @@ protocol LoggedInInteractable: Interactable {
 
 protocol LoggedInViewControllable: ViewControllable {}
 
-final class LoggedInRouter: ViewableRouter<LoggedInInteractable, LoggedInViewControllable>, LoggedInRouting {
+final class LoggedInRouter: Router<LoggedInInteractable>, LoggedInRouting {
 
-    override init(
+    private let viewController: LoggedInViewControllable
+
+    init(
         interactor: LoggedInInteractable,
         viewController: LoggedInViewControllable
     ) {
-        super.init(interactor: interactor, viewController: viewController)
+        self.viewController = viewController
+
+        super.init(interactor: interactor)
 
         interactor.router = self
     }
