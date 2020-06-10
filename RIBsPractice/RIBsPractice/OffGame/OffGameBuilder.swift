@@ -25,7 +25,15 @@ final class OffGameBuilder: Builder<OffGameDependency>, OffGameBuildable {
 
     func build(withListener listener: OffGameListener) -> OffGameRouting {
         _ = OffGameComponent(dependency: dependency)
-        let viewController = OffGameViewController()
+
+        let vcName = "OffGameViewController"
+        let viewController = UIStoryboard(
+            name: vcName,
+            bundle: nil
+        ).instantiateViewController(
+            withIdentifier: vcName
+        ) as! OffGameViewController // 실제 프로젝트에서는 Optional 처리를 꼭 해주세요 🙏💦
+
         let interactor = OffGameInteractor(presenter: viewController)
         interactor.listener = listener
 
