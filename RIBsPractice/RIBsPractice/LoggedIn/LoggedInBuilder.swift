@@ -20,7 +20,7 @@ final class LoggedInComponent: Component<LoggedInDependency> {
 
 }
 
-extension LoggedInComponent: OffGameDependency {}
+extension LoggedInComponent: OffGameDependency, TicTacToeDependency {}
 
 // MARK: - Builder
 protocol LoggedInBuildable: Buildable {
@@ -39,11 +39,13 @@ final class LoggedInBuilder: Builder<LoggedInDependency>, LoggedInBuildable {
         interactor.listener = listener
 
         let offGameBuilder = OffGameBuilder(dependency: component)
+        let tictacToeBuilder = TicTacToeBuilder(dependency: component)
 
         return LoggedInRouter(
             interactor: interactor,
             viewController: component.loggedInViewController,
-            offGameBuilder: offGameBuilder
+            offGameBuilder: offGameBuilder,
+            ticTacToeBuilder: tictacToeBuilder
         )
     }
 

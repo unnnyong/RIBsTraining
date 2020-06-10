@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol LoggedInInteractable: Interactable, OffGameListener {
+protocol LoggedInInteractable: Interactable, OffGameListener, TicTacToeListener {
     var router: LoggedInRouting? { get set }
     var listener: LoggedInListener? { get set }
 }
@@ -27,13 +27,19 @@ final class LoggedInRouter: Router<LoggedInInteractable> {
     private let offGameBuilder: OffGameBuildable
     private var offGame: OffGameRouting?
 
+    private let ticTacToeBuilder: TicTacToeBuildable
+    private var ticTacToe: TicTacToeRouting?
+
     init(
         interactor: LoggedInInteractable,
         viewController: LoggedInViewControllable,
-        offGameBuilder: OffGameBuildable
+        offGameBuilder: OffGameBuildable,
+        ticTacToeBuilder: TicTacToeBuildable
     ) {
         self.viewController = viewController
+
         self.offGameBuilder = offGameBuilder
+        self.ticTacToeBuilder = ticTacToeBuilder
 
         super.init(interactor: interactor)
 
@@ -63,7 +69,16 @@ extension LoggedInRouter: LoggedInRouting {
             viewController.dismiss(viewController: offGame.viewControllable)
 
             self.currentChild = nil
+            self.offGame = nil
         }
+
+        let ticTacToe = ticTacToeBuilder.build(withListener: interactor)
+        self.ticTacToe = ticTacToe
+        currentChild = ticTacToe
+
+        attachChild(ticTacToe)
+
+        viewController.present(viewController: ticTacToe.viewControllable)
     }
 
 }
