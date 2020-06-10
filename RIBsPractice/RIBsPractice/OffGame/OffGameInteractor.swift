@@ -27,4 +27,5 @@ final class OffGameInteractor: PresentableInteractor<OffGamePresentable>, OffGam
 
         presenter.listener = self
     }
+
 }

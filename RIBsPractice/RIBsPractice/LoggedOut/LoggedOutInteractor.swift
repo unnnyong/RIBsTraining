@@ -29,6 +29,7 @@ final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, Lo
 
         presenter.listener = self
     }
+
 }
 
 // MARK: LoggedOutPresentableListener

@@ -17,9 +17,13 @@ protocol OffGameViewControllable: ViewControllable {}
 
 final class OffGameRouter: ViewableRouter<OffGameInteractable, OffGameViewControllable>, OffGameRouting {
 
-    override init(interactor: OffGameInteractable, viewController: OffGameViewControllable) {
+    override init(
+        interactor: OffGameInteractable,
+        viewController: OffGameViewControllable
+    ) {
         super.init(interactor: interactor, viewController: viewController)
 
         interactor.router = self
     }
+
 }

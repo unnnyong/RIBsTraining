@@ -34,7 +34,9 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootPresenta
 
 // MARK: RootInteractable
 extension RootInteractor: RootInteractable {
+
     func didLogin(player1Name: String, player2Name: String) {
         router?.routeToLoggedIn(player1Name: player1Name, player2Name: player2Name)
     }
+
 }
