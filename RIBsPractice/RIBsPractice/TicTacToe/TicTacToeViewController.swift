@@ -10,7 +10,9 @@ import RIBs
 import RxSwift
 import UIKit
 
-protocol TicTacToePresentableListener: class {}
+protocol TicTacToePresentableListener: class {
+    func gameDidEnd()
+}
 
 final class TicTacToeViewController: UIViewController, TicTacToePresentable, TicTacToeViewControllable {
 
@@ -21,7 +23,8 @@ final class TicTacToeViewController: UIViewController, TicTacToePresentable, Tic
 // MARK: IBAction
 private extension TicTacToeViewController {
 
-  @IBAction func didTapFinishButton(_ sender: UIButton) {
+    @IBAction func didTapFinishButton(_ sender: UIButton) {
+        listener?.gameDidEnd()
     }
 
 }

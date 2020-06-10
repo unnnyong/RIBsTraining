@@ -15,9 +15,11 @@ protocol TicTacToePresentable: Presentable {
     var listener: TicTacToePresentableListener? { get set }
 }
 
-protocol TicTacToeListener: class {}
+protocol TicTacToeListener: class {
+    func gameDidEnd()
+}
 
-final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, TicTacToeInteractable, TicTacToePresentableListener {
+final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, TicTacToeInteractable {
 
     weak var router: TicTacToeRouting?
     weak var listener: TicTacToeListener?
@@ -25,6 +27,15 @@ final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, Ti
     override init(presenter: TicTacToePresentable) {
         super.init(presenter: presenter)
         presenter.listener = self
+    }
+
+}
+
+// MARK: TicTacToePresentableListener
+extension TicTacToeInteractor: TicTacToePresentableListener {
+
+    func gameDidEnd() {
+        listener?.gameDidEnd()
     }
 
 }

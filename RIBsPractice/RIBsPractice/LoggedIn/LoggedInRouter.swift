@@ -49,6 +49,43 @@ final class LoggedInRouter: Router<LoggedInInteractable> {
     override func didLoad() {
         super.didLoad()
 
+        attachOffGame()
+    }
+
+    func cleanupViews() {
+        guard let currentChild = currentChild else { return }
+
+        viewController.dismiss(viewController: currentChild.viewControllable)
+    }
+
+}
+
+// MARK: LoggedInRouting
+extension LoggedInRouter: LoggedInRouting {
+
+    func routeToTicTacToe() {
+        detachCurrentChild()
+
+        let ticTacToe = ticTacToeBuilder.build(withListener: interactor)
+        self.ticTacToe = ticTacToe
+        currentChild = ticTacToe
+
+        attachChild(ticTacToe)
+
+        viewController.present(viewController: ticTacToe.viewControllable)
+    }
+
+    func routeToOffGame() {
+        detachCurrentChild()
+        attachOffGame()
+    }
+
+}
+
+// MARK: Private Method
+private extension LoggedInRouter {
+
+    func attachOffGame() {
         let offGame = offGameBuilder.build(withListener: interactor)
         self.offGame = offGame
         currentChild = offGame
@@ -58,27 +95,13 @@ final class LoggedInRouter: Router<LoggedInInteractable> {
         viewController.present(viewController: offGame.viewControllable)
     }
 
-}
+    func detachCurrentChild() {
+        guard let currentChild = currentChild else { return }
 
-// MARK: LoggedInRouting
-extension LoggedInRouter: LoggedInRouting {
+        detachChild(currentChild)
+        viewController.dismiss(viewController: currentChild.viewControllable)
 
-    func routeToTicTacToe() {
-        if let offGame = offGame {
-            detachChild(offGame)
-            viewController.dismiss(viewController: offGame.viewControllable)
-
-            self.currentChild = nil
-            self.offGame = nil
-        }
-
-        let ticTacToe = ticTacToeBuilder.build(withListener: interactor)
-        self.ticTacToe = ticTacToe
-        currentChild = ticTacToe
-
-        attachChild(ticTacToe)
-
-        viewController.present(viewController: ticTacToe.viewControllable)
+        self.currentChild = nil
     }
 
 }
