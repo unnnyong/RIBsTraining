@@ -32,3 +32,12 @@ extension RootViewController: RootViewControllable {
     }
 
 }
+
+// MARK: LoggedInViewControllable
+extension RootViewController: LoggedInViewControllable {
+
+    func present(to viewController: ViewControllable) {
+        present(viewController.uiviewController, animated: true, completion: nil)
+    }
+
+}
