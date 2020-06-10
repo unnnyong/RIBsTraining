@@ -16,7 +16,7 @@ protocol LoggedOutPresentable: Presentable {
 }
 
 protocol LoggedOutListener: class {
-    // TODO: Declare methods the interactor can invoke to communicate with other RIBs.
+    func didLogin(player1Name: String, player2Name: String)
 }
 
 final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, LoggedOutInteractable {
@@ -38,7 +38,7 @@ extension LoggedOutInteractor: LoggedOutPresentableListener {
         let player1Name = player1Name ?? "Default"
         let player2Name = player2Name ?? "Default"
 
-        print("첫 번째 선수 이름: \(player1Name), 두 번째 선수 이름: \(player2Name)")
+        listener?.didLogin(player1Name: player1Name, player2Name: player2Name)
     }
 
 }
