@@ -25,4 +25,10 @@ extension RootViewController: RootViewControllable {
         present(viewController.uiviewController, animated: true, completion: nil)
     }
 
+    func dismiss(viewController: ViewControllable) {
+        guard presentedViewController == viewController.uiviewController else { return }
+
+        dismiss(animated: true)
+    }
+
 }
