@@ -16,3 +16,10 @@ final class OffGameViewController: UIViewController, OffGamePresentable, OffGame
 
     weak var listener: OffGamePresentableListener?
 }
+
+// MARK: IBAction
+private extension OffGameViewController {
+
+    @IBAction func didStartButton(_ sender: UIButton) {}
+
+}

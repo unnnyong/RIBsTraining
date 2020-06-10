@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vKn-9P-Ny8">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--product Name View Controller-->
+        <!--Off Game View Controller-->
         <scene sceneID="GzV-lN-fg7">
             <objects>
-                <viewController id="vKn-9P-Ny8" customClass="OffGameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OffGameViewController" id="vKn-9P-Ny8" customClass="OffGameViewController" customModule="RIBsPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BNZ-bO-rhc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dql-rD-S7T">
+                                <rect key="frame" x="40" y="283.5" width="295" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="hjv-IY-wOv"/>
+                                </constraints>
+                                <state key="normal" title="Start Game">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="didStartButton:" destination="vKn-9P-Ny8" eventType="touchUpInside" id="bOg-Od-rfv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="dql-rD-S7T" secondAttribute="trailing" constant="40" id="2yW-pc-g8b"/>
+                            <constraint firstItem="dql-rD-S7T" firstAttribute="centerY" secondItem="HgA-Aw-ocO" secondAttribute="centerY" id="4BL-f1-NPf"/>
+                            <constraint firstItem="dql-rD-S7T" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="40" id="nbX-3f-aUZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HgA-Aw-ocO"/>
                     </view>
                 </viewController>
