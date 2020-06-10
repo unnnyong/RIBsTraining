@@ -14,7 +14,8 @@ protocol LoggedInInteractable: Interactable, OffGameListener {
 }
 
 protocol LoggedInViewControllable: ViewControllable {
-    func present(to viewController: ViewControllable)
+    func present(viewController: ViewControllable)
+    func dismiss(viewController: ViewControllable)
 }
 
 final class LoggedInRouter: Router<LoggedInInteractable>, LoggedInRouting {
@@ -48,7 +49,7 @@ final class LoggedInRouter: Router<LoggedInInteractable>, LoggedInRouting {
 
         attachChild(offGame)
 
-        viewController.present(to: offGame.viewControllable)
+        viewController.present(viewController: offGame.viewControllable)
     }
 
 }

@@ -18,8 +18,8 @@ final class RootViewController: UIViewController, RootPresentable {
 
 }
 
-// MARK: RootViewControllable
-extension RootViewController: RootViewControllable {
+// MARK: RootViewControllable, LoggedInViewControllable
+extension RootViewController: RootViewControllable, LoggedInViewControllable {
 
     func present(viewController: ViewControllable) {
         present(viewController.uiviewController, animated: true, completion: nil)
@@ -29,15 +29,6 @@ extension RootViewController: RootViewControllable {
         guard presentedViewController == viewController.uiviewController else { return }
 
         dismiss(animated: true)
-    }
-
-}
-
-// MARK: LoggedInViewControllable
-extension RootViewController: LoggedInViewControllable {
-
-    func present(to viewController: ViewControllable) {
-        present(viewController.uiviewController, animated: true, completion: nil)
     }
 
 }
