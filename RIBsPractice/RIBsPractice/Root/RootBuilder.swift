@@ -10,8 +10,27 @@ import RIBs
 
 protocol RootDependency: Dependency {}
 
-final class RootComponent: Component<RootDependency> {}
-extension RootComponent: LoggedOutDependency, LoggedInDependency {}
+// MARK: Component
+final class RootComponent: Component<RootDependency> {
+
+    let rootViewController: RootViewController
+
+    init(dependency: RootDependency, rootViewController: RootViewController) {
+        self.rootViewController = rootViewController
+
+        super.init(dependency: dependency)
+    }
+
+}
+
+extension RootComponent: LoggedOutDependency {}
+extension RootComponent: LoggedInDependency {
+
+    var loggedInViewController: LoggedInViewControllable {
+        return rootViewController
+    }
+
+}
 
 // MARK: - Builder
 protocol RootBuildable: Buildable {
@@ -30,8 +49,8 @@ final class RootBuilder: Builder<RootDependency> {
 extension RootBuilder: RootBuildable {
 
     func build() -> LaunchRouting {
-        let component = RootComponent(dependency: dependency)
         let viewController = RootViewController()
+        let component = RootComponent(dependency: dependency, rootViewController: viewController)
         let interactor = RootInteractor(presenter: viewController)
 
         let loggedInBuilder = LoggedInBuilder(dependency: component)

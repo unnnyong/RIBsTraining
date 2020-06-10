@@ -8,9 +8,19 @@
 
 import RIBs
 
-protocol LoggedInDependency: Dependency {}
+protocol LoggedInDependency: Dependency {
+    var loggedInViewController: LoggedInViewControllable { get }
+}
 
-final class LoggedInComponent: Component<LoggedInDependency> {}
+final class LoggedInComponent: Component<LoggedInDependency> {
+
+    fileprivate var loggedInViewController: LoggedInViewControllable {
+        return dependency.loggedInViewController
+    }
+
+}
+
+extension LoggedInComponent: OffGameDependency {}
 
 // MARK: - Builder
 protocol LoggedInBuildable: Buildable {
@@ -24,11 +34,17 @@ final class LoggedInBuilder: Builder<LoggedInDependency>, LoggedInBuildable {
     }
 
     func build(withListener listener: LoggedInListener) -> LoggedInRouting {
-        _ = LoggedInComponent(dependency: dependency)
-        let viewController = LoggedInViewController()
-        let interactor = LoggedInInteractor(presenter: viewController)
+        let component = LoggedInComponent(dependency: dependency)
+        let interactor = LoggedInInteractor()
         interactor.listener = listener
-        return LoggedInRouter(interactor: interactor, viewController: viewController)
+
+        let offGameBuilder = OffGameBuilder(dependency: component)
+
+        return LoggedInRouter(
+            interactor: interactor,
+            viewController: component.loggedInViewController,
+            offGameBuilder: offGameBuilder
+        )
     }
 
 }
