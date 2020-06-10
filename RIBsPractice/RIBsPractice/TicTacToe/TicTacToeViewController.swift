@@ -17,3 +17,11 @@ final class TicTacToeViewController: UIViewController, TicTacToePresentable, Tic
     weak var listener: TicTacToePresentableListener?
 
 }
+
+// MARK: IBAction
+private extension TicTacToeViewController {
+
+  @IBAction func didTapFinishButton(_ sender: UIButton) {
+    }
+
+}
