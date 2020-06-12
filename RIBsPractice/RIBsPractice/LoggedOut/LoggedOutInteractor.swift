@@ -36,8 +36,8 @@ final class LoggedOutInteractor: PresentableInteractor<LoggedOutPresentable>, Lo
 extension LoggedOutInteractor: LoggedOutPresentableListener {
 
     func login(player1Name: String?, player2Name: String?) {
-        let player1Name = player1Name ?? "Default"
-        let player2Name = player2Name ?? "Default"
+        let player1Name = (player1Name == "") ? "Default" : (player1Name ?? "Default")
+        let player2Name = (player2Name == "") ? "Default" : (player2Name ?? "Default")
 
         listener?.didLogin(player1Name: player1Name, player2Name: player2Name)
     }
