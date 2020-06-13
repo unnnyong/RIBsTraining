@@ -21,6 +21,12 @@ final class LoggedInInteractor: Interactor {
     weak var router: LoggedInRouting?
     weak var listener: LoggedInListener?
 
+    private let mutableScoreStream: MutableScoreStream
+
+    init(mutableScoreStream: MutableScoreStream) {
+        self.mutableScoreStream = mutableScoreStream
+    }
+
 }
 
 // MARK: LoggedInInteractable
