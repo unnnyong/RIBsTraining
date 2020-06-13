@@ -24,7 +24,14 @@ final class OffGameInteractor: PresentableInteractor<OffGamePresentable>, OffGam
     weak var router: OffGameRouting?
     weak var listener: OffGameListener?
 
-    override init(presenter: OffGamePresentable) {
+    private var scoreStream: ScoreStream
+
+    init(
+        presenter: OffGamePresentable,
+        scoreStream: ScoreStream
+    ) {
+        self.scoreStream = scoreStream
+        
         super.init(presenter: presenter)
 
         presenter.listener = self

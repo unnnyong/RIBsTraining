@@ -11,6 +11,7 @@ import RIBs
 protocol OffGameDependency: Dependency {
     var player1Name: String { get }
     var player2Name: String { get }
+    var scoreStream: ScoreStream { get }
 }
 
 final class OffGameComponent: Component<OffGameDependency> {
@@ -21,6 +22,10 @@ final class OffGameComponent: Component<OffGameDependency> {
 
     fileprivate var player2Name: String {
         dependency.player1Name
+    }
+
+    fileprivate var scoreStream: ScoreStream {
+        dependency.scoreStream
     }
 
 }
@@ -50,7 +55,10 @@ final class OffGameBuilder: Builder<OffGameDependency>, OffGameBuildable {
         viewController.player1Name = component.player1Name
         viewController.player2Name = component.player2Name
 
-        let interactor = OffGameInteractor(presenter: viewController)
+        let interactor = OffGameInteractor(
+            presenter: viewController,
+            scoreStream: component.scoreStream
+        )
         interactor.listener = listener
 
         return OffGameRouter(interactor: interactor, viewController: viewController)

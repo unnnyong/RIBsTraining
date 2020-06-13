@@ -38,7 +38,15 @@ final class LoggedInComponent: Component<LoggedInDependency> {
 
 }
 
-extension LoggedInComponent: OffGameDependency, TicTacToeDependency {}
+extension LoggedInComponent: OffGameDependency {
+
+    var scoreStream: ScoreStream {
+        mutableScoreStream
+    }
+
+}
+
+extension LoggedInComponent: TicTacToeDependency {}
 
 // MARK: - Builder
 protocol LoggedInBuildable: Buildable {
