@@ -8,9 +8,22 @@
 
 import RIBs
 
-protocol OffGameDependency: Dependency {}
+protocol OffGameDependency: Dependency {
+    var player1Name: String { get }
+    var player2Name: String { get }
+}
 
-final class OffGameComponent: Component<OffGameDependency> {}
+final class OffGameComponent: Component<OffGameDependency> {
+
+    fileprivate var player1Name: String {
+        dependency.player1Name
+    }
+
+    fileprivate var player2Name: String {
+        dependency.player1Name
+    }
+
+}
 
 // MARK: - Builder
 protocol OffGameBuildable: Buildable {
@@ -24,7 +37,7 @@ final class OffGameBuilder: Builder<OffGameDependency>, OffGameBuildable {
     }
 
     func build(withListener listener: OffGameListener) -> OffGameRouting {
-        _ = OffGameComponent(dependency: dependency)
+        let component = OffGameComponent(dependency: dependency)
 
         let vcName = "OffGameViewController"
         let viewController = UIStoryboard(
@@ -33,6 +46,9 @@ final class OffGameBuilder: Builder<OffGameDependency>, OffGameBuildable {
         ).instantiateViewController(
             withIdentifier: vcName
         ) as! OffGameViewController // 실제 프로젝트에서는 Optional 처리를 꼭 해주세요 🙏💦
+
+        viewController.player1Name = component.player1Name
+        viewController.player2Name = component.player2Name
 
         let interactor = OffGameInteractor(presenter: viewController)
         interactor.listener = listener

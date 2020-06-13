@@ -64,7 +64,11 @@ extension RootRouter: RootRouting {
             self.loggedOut = nil
         }
 
-        self.loggedIn = loggedInBuilder.build(withListener: interactor)
+        self.loggedIn = loggedInBuilder.build(
+            withListener: interactor,
+            player1Name: player1Name,
+            player2Name: player2Name
+        )
 
         attachChild(loggedIn!)
     }
