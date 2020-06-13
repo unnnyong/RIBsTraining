@@ -16,7 +16,18 @@ protocol OffGamePresentableListener: class {
 
 final class OffGameViewController: UIViewController, OffGamePresentable, OffGameViewControllable {
 
+    @IBOutlet private weak var playerNameLabel: UILabel!
+
     weak var listener: OffGamePresentableListener?
+
+    var player1Name: String!
+    var player2Name: String!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        playerNameLabel.text = "\(player1Name!) vs \(player2Name!)"
+    }
 
 }
 

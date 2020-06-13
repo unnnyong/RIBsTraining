@@ -16,10 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dql-rD-S7T">
-                                <rect key="frame" x="40" y="283.5" width="295" height="100"/>
+                                <rect key="frame" x="40" y="308.5" width="295" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="hjv-IY-wOv"/>
+                                    <constraint firstAttribute="height" constant="50" id="hjv-IY-wOv"/>
                                 </constraints>
                                 <state key="normal" title="Start Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -28,15 +28,27 @@
                                     <action selector="didStartButton:" destination="vKn-9P-Ny8" eventType="touchUpInside" id="bOg-Od-rfv"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuh-HT-LBE">
+                                <rect key="frame" x="10" y="249" width="355" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="dql-rD-S7T" secondAttribute="trailing" constant="40" id="2yW-pc-g8b"/>
                             <constraint firstItem="dql-rD-S7T" firstAttribute="centerY" secondItem="HgA-Aw-ocO" secondAttribute="centerY" id="4BL-f1-NPf"/>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="xuh-HT-LBE" secondAttribute="trailing" constant="10" id="bjF-px-J8e"/>
+                            <constraint firstItem="dql-rD-S7T" firstAttribute="top" secondItem="xuh-HT-LBE" secondAttribute="bottom" constant="40" id="hHV-VI-gBc"/>
                             <constraint firstItem="dql-rD-S7T" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="40" id="nbX-3f-aUZ"/>
+                            <constraint firstItem="xuh-HT-LBE" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="10" id="rbX-u5-ChQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HgA-Aw-ocO"/>
                     </view>
+                    <connections>
+                        <outlet property="playerNameLabel" destination="xuh-HT-LBE" id="tBk-wm-EEA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
