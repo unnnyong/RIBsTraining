@@ -14,7 +14,7 @@ protocol OffGamePresentableListener: class {
     func startGame()
 }
 
-final class OffGameViewController: UIViewController, OffGamePresentable, OffGameViewControllable {
+final class OffGameViewController: UIViewController, OffGameViewControllable {
 
     @IBOutlet private weak var playerNameLabel: UILabel!
 
@@ -23,10 +23,21 @@ final class OffGameViewController: UIViewController, OffGamePresentable, OffGame
     var player1Name: String!
     var player2Name: String!
 
+    private var score: Score?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         playerNameLabel.text = "\(player1Name!) vs \(player2Name!)"
+    }
+
+}
+
+// MARK: OffGamePresentable
+extension OffGameViewController: OffGamePresentable {
+
+    func set(score: Score) {
+        self.score = score
     }
 
 }
