@@ -28,26 +28,50 @@
                                     <action selector="didStartButton:" destination="vKn-9P-Ny8" eventType="touchUpInside" id="bOg-Od-rfv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuh-HT-LBE">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="LGE-1E-fD7">
                                 <rect key="frame" x="10" y="249" width="355" height="19.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuh-HT-LBE">
+                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvR-Pv-ALQ">
+                                        <rect key="frame" x="166" y="0.0" width="22" height="19.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="22" id="dDE-Lz-9RM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="P2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuB-SO-drf">
+                                        <rect key="frame" x="334.5" y="0.0" width="20.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19.5" id="boK-Tm-kiR"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="dql-rD-S7T" secondAttribute="trailing" constant="40" id="2yW-pc-g8b"/>
                             <constraint firstItem="dql-rD-S7T" firstAttribute="centerY" secondItem="HgA-Aw-ocO" secondAttribute="centerY" id="4BL-f1-NPf"/>
-                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="xuh-HT-LBE" secondAttribute="trailing" constant="10" id="bjF-px-J8e"/>
-                            <constraint firstItem="dql-rD-S7T" firstAttribute="top" secondItem="xuh-HT-LBE" secondAttribute="bottom" constant="40" id="hHV-VI-gBc"/>
+                            <constraint firstItem="HgA-Aw-ocO" firstAttribute="trailing" secondItem="LGE-1E-fD7" secondAttribute="trailing" constant="10" id="J6p-GD-DXn"/>
+                            <constraint firstItem="LGE-1E-fD7" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="10" id="dpZ-MJ-Kbc"/>
                             <constraint firstItem="dql-rD-S7T" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="40" id="nbX-3f-aUZ"/>
-                            <constraint firstItem="xuh-HT-LBE" firstAttribute="leading" secondItem="HgA-Aw-ocO" secondAttribute="leading" constant="10" id="rbX-u5-ChQ"/>
+                            <constraint firstItem="dql-rD-S7T" firstAttribute="top" secondItem="LGE-1E-fD7" secondAttribute="bottom" constant="40" id="v8f-bI-f8q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HgA-Aw-ocO"/>
                     </view>
                     <connections>
-                        <outlet property="playerNameLabel" destination="xuh-HT-LBE" id="tBk-wm-EEA"/>
+                        <outlet property="player1NameLabel" destination="xuh-HT-LBE" id="K3y-el-3vo"/>
+                        <outlet property="player2NameLabel" destination="HuB-SO-drf" id="523-uq-g7d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0X-am-vwV" userLabel="First Responder" sceneMemberID="firstResponder"/>
