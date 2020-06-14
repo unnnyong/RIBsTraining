@@ -1,10 +1,10 @@
-# RIBsTraining
+# 💪 RIBs Training
 
 [RIBs](https://github.com/uber/RIBs) 리포지토리의 [튜토리얼](https://github.com/uber/RIBs/wiki)의 코드입니다.
 Tutorial 3까지의 코드입니다.
 
 > 📌 프로젝트 실행 전 Carthage 설치를 꼭 해주세요.
->- `$ carthage update --platform iOS`
+> `$ carthage update --platform iOS`
 
 ### [Tutorial 1](https://github.com/uber/RIBs/wiki/iOS-Tutorial-1)
 
