@@ -13,6 +13,8 @@ protocol TicTacToeRouting: ViewableRouting {}
 
 protocol TicTacToePresentable: Presentable {
     var listener: TicTacToePresentableListener? { get set }
+
+    func announce(winner: PlayerType?, with completionHandler: @escaping () -> ())
 }
 
 protocol TicTacToeListener: class {
@@ -34,8 +36,20 @@ final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, Ti
 // MARK: TicTacToePresentableListener
 extension TicTacToeInteractor: TicTacToePresentableListener {
 
-    func gameDidEnd() {
-        listener?.gameDidEnd()
+    func placeCurrentPlayerMark(at row: Int, col: Int) {
+        // 실제 게임 화면은 구현하지 않았기 때문에 무작위의 PlayerType을 사용.
+        let winner = setWinner()
+        listener?.gameDidEnd(with: winner)
+    }
+
+}
+
+// MARK: Private
+private extension TicTacToeInteractor {
+
+    func setWinner() -> PlayerType? {
+        let playerTypes: [PlayerType] = [.player1, .player2]
+        return playerTypes.randomElement()
     }
 
 }
