@@ -18,7 +18,7 @@ protocol TicTacToePresentable: Presentable {
 }
 
 protocol TicTacToeListener: class {
-    func gameDidEnd()
+    func gameDidEnd(with winner: PlayerType?)
 }
 
 final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, TicTacToeInteractable {

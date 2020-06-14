@@ -36,7 +36,11 @@ extension LoggedInInteractor: LoggedInInteractable {
         router?.routeToTicTacToe()
     }
 
-    func gameDidEnd() {
+    func gameDidEnd(with winner: PlayerType?) {
+        if let winner = winner {
+            mutableScoreStream.updateScore(with: winner)
+        }
+
         router?.routeToOffGame()
     }
 
