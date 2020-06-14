@@ -23,13 +23,13 @@ final class TicTacToeViewController: UIViewController, TicTacToeViewControllable
 // MARK: TicTacToePresentable
 extension TicTacToeViewController: TicTacToePresentable {
 
-    func announce(winner: PlayerType?, with completionHandler: @escaping () -> ()) {
+    func announce(winner: Player?, with completionHandler: @escaping () -> ()) {
         let winnerString: String = {
             guard let winner = winner else {
                 return "It's a draw!"
             }
 
-            return "\(winner.colorString) won!"
+            return "\(winner.name) won!"
         }()
 
         let alert = UIAlertController(
@@ -48,6 +48,7 @@ extension TicTacToeViewController: TicTacToePresentable {
         alert.addAction(closeAction)
         present(alert, animated: true, completion: nil)
     }
+
 }
 
 // MARK: IBAction

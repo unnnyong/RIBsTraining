@@ -14,11 +14,11 @@ protocol TicTacToeRouting: ViewableRouting {}
 protocol TicTacToePresentable: Presentable {
     var listener: TicTacToePresentableListener? { get set }
 
-    func announce(winner: PlayerType?, with completionHandler: @escaping () -> ())
+    func announce(winner: Player?, with completionHandler: @escaping () -> ())
 }
 
 protocol TicTacToeListener: class {
-    func gameDidEnd(with winner: PlayerType?)
+    func gameDidEnd(with winner: Player?)
 }
 
 final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, TicTacToeInteractable {
@@ -26,8 +26,19 @@ final class TicTacToeInteractor: PresentableInteractor<TicTacToePresentable>, Ti
     weak var router: TicTacToeRouting?
     weak var listener: TicTacToeListener?
 
-    override init(presenter: TicTacToePresentable) {
+    let player1: Player
+    let player2: Player
+
+    init(
+        presenter: TicTacToePresentable,
+        player1: Player,
+        player2: Player
+    ) {
+        self.player1 = player1
+        self.player2 = player2
+
         super.init(presenter: presenter)
+
         presenter.listener = self
     }
 
@@ -49,8 +60,8 @@ extension TicTacToeInteractor: TicTacToePresentableListener {
 // MARK: Private
 private extension TicTacToeInteractor {
 
-    func setWinner() -> PlayerType? {
-        PlayerType.allCases.randomElement()
+    func setWinner() -> Player? {
+        [player1, player2, nil].randomElement() ?? nil
     }
 
 }

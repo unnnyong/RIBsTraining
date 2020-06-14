@@ -18,8 +18,8 @@ final class LoggedInComponent: Component<LoggedInDependency> {
         return dependency.loggedInViewController
     }
 
-    let player1Name: String
-    let player2Name: String
+    let player1: Player
+    let player2: Player
 
     var mutableScoreStream: MutableScoreStream {
         shared { ScoreStreamImpl() }
@@ -30,8 +30,8 @@ final class LoggedInComponent: Component<LoggedInDependency> {
         player1Name: String,
         player2Name: String
     ) {
-        self.player1Name = player1Name
-        self.player2Name = player2Name
+        self.player1 = Player(name: player1Name, type: .player1)
+        self.player2 = Player(name: player2Name, type: .player2)
 
         super.init(dependency: dependency)
     }
