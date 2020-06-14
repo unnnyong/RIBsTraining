@@ -19,6 +19,7 @@ final class TicTacToeRouter: ViewableRouter<TicTacToeInteractable, TicTacToeView
 
     override init(interactor: TicTacToeInteractable, viewController: TicTacToeViewControllable) {
         super.init(interactor: interactor, viewController: viewController)
+        
         interactor.router = self
     }
 
