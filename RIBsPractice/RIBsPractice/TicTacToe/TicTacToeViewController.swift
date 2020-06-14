@@ -24,19 +24,28 @@ final class TicTacToeViewController: UIViewController, TicTacToeViewControllable
 extension TicTacToeViewController: TicTacToePresentable {
 
     func announce(winner: Player?, with completionHandler: @escaping () -> ()) {
-        let winnerString: String = {
-            guard let winner = winner else {
-                return "It's a draw!"
-            }
+        let winnerString: String
+        let alertTitleColor: UIColor
 
-            return "\(winner.name) won!"
-        }()
+        if let winner = winner {
+            winnerString = "\(winner.name) won!"
+            alertTitleColor = winner.type.color
+        } else {
+            winnerString = "It's a draw!"
+            alertTitleColor = .black
+        }
 
         let alert = UIAlertController(
             title: winnerString,
             message: nil,
             preferredStyle: .alert
         )
+
+        let attributedTitle = NSAttributedString(
+            string: winnerString,
+            attributes: [NSAttributedString.Key.foregroundColor: alertTitleColor]
+        )
+        alert.setValue(attributedTitle, forKey: "attributedTitle")
 
         let closeAction = UIAlertAction(
             title: "Close Game",

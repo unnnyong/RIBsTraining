@@ -20,13 +20,4 @@ enum PlayerType: Int, CaseIterable {
             return .blue
         }
     }
-
-    var colorString: String {
-        switch self {
-        case .player1:
-            return "Red"
-        case .player2:
-            return "Blue"
-        }
-    }
 }
