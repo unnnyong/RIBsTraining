@@ -48,8 +48,7 @@ extension TicTacToeInteractor: TicTacToePresentableListener {
 private extension TicTacToeInteractor {
 
     func setWinner() -> PlayerType? {
-        let playerTypes: [PlayerType] = [.player1, .player2]
-        return playerTypes.randomElement()
+        PlayerType.allCases.randomElement()
     }
 
 }
