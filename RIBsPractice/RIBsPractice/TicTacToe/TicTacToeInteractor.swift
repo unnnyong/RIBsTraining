@@ -39,7 +39,9 @@ extension TicTacToeInteractor: TicTacToePresentableListener {
     func placeCurrentPlayerMark(at row: Int, col: Int) {
         // 실제 게임 화면은 구현하지 않았기 때문에 무작위의 PlayerType을 사용.
         let winner = setWinner()
-        listener?.gameDidEnd(with: winner)
+        presenter.announce(winner: winner) { [weak self] in
+            self?.listener?.gameDidEnd(with: winner)
+        }
     }
 
 }
